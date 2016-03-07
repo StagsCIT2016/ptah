@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row" ng-hide="vm.previewJob">
+    <div class="col-md-9">
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-2">
+            <select class="form-control" id="job-type" ng-model="vm.newJob.type_">
+              <option>Full Time</option>
+              <option>Part Time</option>
+              <option>Contract</option>
+            </select>
+          </div>
+          <div class="col-md-10">
+            <input type="text" class="form-control " placeholder="Location" ng-model="vm.newJob.location">
+          </div>
+        </div>
+        <input type="text" class="form-control position-input" placeholder="Position" ng-model="vm.newJob.title">
+        <textarea class="form-control" rows="10" placeholder="Description" ng-model="vm.newJob.description"></textarea>
+      </div>
+      <div ng-click="vm.previewClick()" class="btn btn-default">Preview Job</div>
+    </div>
+    <div class="col-md-3">
+      <div class="cool-box">
+        <input type="text" class="form-control" placeholder="Company Name" ng-model="vm.newJob.company">
+        <img ng-if="vm.previewSource" src="{{ vm.previewSource }}" >
+        <input type="file" file-preview ></input>
+        <input type="text" class="form-control" placeholder="Company Website" ng-model="vm.newJob.company_url">
+      </div>
+      <div class="cool-box">
+        <h4>How to apply</h4>
+        <textarea ng-model="vm.newJob.how_to_apply" class="form-control" rows="4" placeholder="For example:{{'\n'}}Email your resume to job@somewhere.com"></textarea>
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Preview Mode -->
+  <div ng-show="vm.previewJob">
+      <div class="row">
+      <div class="col-md-9">
+        <div>
+          {{ vm.newJob.type_ + " / " + vm.newJob.location }}
+          <h4>{{ vm.newJob.title }}</h4>
+        </div>
+        <div ng-bind-html="vm.description"></div>
+        <div class="flex-btn">
+          <div ng-click="vm.previewClick()" class="btn btn-default">Edit Job</div>
+          <div ng-click="vm.submitJob()" class="btn btn-success">Publish</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="cool-box">
+          <div id="imgtitle">
+            <h4>{{ vm.newJob.company }}</h4>
+          </div>
+          <img ng-if="vm.previewSource" src="{{ vm.previewSource }}" >
+          <a href="{{ vm.newJob.company_url }}">{{ vm.newJob.company_url }}</a>
+        </div>
+        <div class="cool-box">
+          <h4>How to Apply</h4>
+          <div ng-bind-html="vm.newJob.how_to_apply"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

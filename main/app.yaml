@@ -39,6 +39,9 @@ handlers:
   static_dir: public/
   expiration: 1000d
 
+- url: /app
+  static_dir: CACA_BICO/
+
 - url: /.*
   script: main.app
   secure: always

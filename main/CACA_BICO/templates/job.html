@@ -1,0 +1,27 @@
+<div id="job-container" class="container">
+  <div ng-show="vm.jobInfo.type_">
+    {{ vm.jobInfo.type_ + " / " + vm.jobInfo.location }}
+    <h4>{{ vm.jobInfo.title }}</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div ng-bind-html="vm.jobInfo.description"></div>
+    </div>
+    <div class="col-md-3">
+      <div class="cool-box">
+        <div id="imgtitle">
+          <h4>
+            {{ vm.jobInfo.company }}
+          </h4>
+        </div>
+        <img src="{{vm.jobInfo.company_logo}}" alt="">
+        <a href="{{ vm.jobInfo.company_url }}">{{ vm.jobInfo.company_url }}</a>
+      </div>
+      <div class="cool-box">
+        <h4>How to Apply</h4>
+        <div ng-bind-html="vm.jobInfo.how_to_apply"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

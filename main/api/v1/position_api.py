@@ -40,7 +40,7 @@ class PositionsAPI(Resource):
     def post(self):
         """Post position"""
         # properties = ["id_", "created_at", "title", "location", "type_", "description",
-        #                     "how_to_apply", "company", "company_url", "company_logo", "url"]
+        #                     "how_to_apply", "company", "company_url", "company_logo"]
 
         parser = reqparse.RequestParser()
         args = parser.parse_args()
@@ -53,8 +53,7 @@ class PositionsAPI(Resource):
             how_to_apply = request.json['how_to_apply'],
             company = request.json['company'],
             company_url = request.json['company_url'],
-            company_logo = request.json['company_logo'],
-            url = request.json['url']
+            company_logo = request.json['company_logo']
         )
         position_db.put()
         position = position_db.to_dict(include=Position.get_public_properties())
@@ -77,12 +76,18 @@ class PositionsAPI(Resource):
 
 @API.resource('/api/v1/positions/<string:key>')
 class PositionByKeyAPI(Resource):
+
+    @model_by_key
+    def get(self, key):
+        return g.model_db.to_dict(include=Position.get_public_properties())
+
+        
     # @authorization_required
     @model_by_key
     def put(self, key):
         """Updates positions's properties"""
         update_properties = [ "title", "location", "type_", "description",
-                            "how_to_apply", "company", "company_url", "company_logo", "url"]
+                            "how_to_apply", "company", "company_url", "company_logo"]
 
         new_data = _.pick(request.json, update_properties)
         g.model_db.populate(**new_data)

@@ -17,7 +17,6 @@ class Position(model.Base):
     company = ndb.StringProperty(default='')
     company_url = ndb.StringProperty(default='')
     company_logo = ndb.StringProperty(default='')
-    url = ndb.StringProperty(default='')
 
     PUBLIC_PROPERTIES = ['created_at', 'title', 'location', 'type_', 'description',
-                        'how_to_apply', 'company', 'company_url', 'company_logo', 'url']
+                        'how_to_apply', 'company', 'company_url', 'company_logo']

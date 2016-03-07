@@ -1,0 +1,30 @@
+<div class="container search-form">
+  <form class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Job description" ng-model="vm.jobDescription">
+      <input type="text" class="form-control" placeholder="Location" ng-model="vm.location">
+      <input type="checkbox" name="full-time" ng-model="vm.fullTimeOnly"> <span>Full-time only</span>
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="vm.searchJobs()">Submit</button>
+  </form>
+</div>
+
+<div id="page-navigation">
+  <input ng-class="{'disabled': vm.page<1}" class="btn btn-info" type="button" value="Previous" ng-click="vm.getPrevPage()">
+  <span class="">Page {{ vm.page +1}}</span>
+  <input class="btn btn-info" type="button"  value="Next" ng-click="vm.getNextPage()">
+</div>
+<div class="container job-list">
+  <div class="list-group">
+    <a href="#/job/{{ job.key }}" class="list-group-item job-preview" ng-repeat="job in vm.jobList">
+      <div class="list-group-item-text">
+        <span>{{ job.title }}</span>
+        <span class="span-right">{{ job.location }}</span>
+      </div>
+      <div class="list-group-item-text">
+        <span>{{ job.company }} - {{ job.type_}}</span>
+        <span class="span-right">{{ vm.createdAt(job.created) }}</span>
+      </div>
+    </a>
+      </div>
+  </div>

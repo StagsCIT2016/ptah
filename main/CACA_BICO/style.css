@@ -1,0 +1,47 @@
+#job-container {
+  border: 1px solid #CCC;
+  border-radius: 5px;
+}
+#page-navigation {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+#brand {
+  text-decoration: : none;
+  color: white;
+}
+
+.span-right{
+  display: flex;
+  justify-content: flex-end;
+}
+.cool-box {
+  border: 1px solid #ccc;
+  padding:10px;
+  border-radius: 5px;
+  background-color: #D8BFD8;
+  margin-bottom: 20px;
+}
+
+.cool-box h4 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.cool-box img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.btn-header {
+  margin-top: 6px;
+}
+.position-input {
+  margin: 10px 0;
+}
+.flex-btn {
+  display: flex;
+  justify-content: space-around;
+}
